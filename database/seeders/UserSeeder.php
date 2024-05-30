@@ -29,9 +29,9 @@ class UserSeeder extends Seeder
         if(empty($user))
         {
             $company = new User();
-            $company->name = 'WorkDo';
-            $company->email = 'company@example.com';
-            $company->password = Hash::make('1234');
+            $company->name = 'VidyaGxP Private Limited';
+            $company->email = 'admin@vidyagxp.com';
+            $company->password = Hash::make('Amit@121');
             $company->email_verified_at = date('Y-m-d H:i:s');
             $company->type = 'company';
             $company->active_status = 1;
