@@ -46,11 +46,18 @@ use App\Http\Controllers\ReferralProgramController;
 */
 
 
+
 // Auth::routes();
 require __DIR__.'/auth.php';
 
+
 // custom domain code
-Route::middleware('domain-check')->group(function () {
+Route::middleware('web')->group(function () {
+
+    Route::get('/', function() {
+        return redirect()->route('login');
+    });
+
     Route::get('/register/{lang?}', [RegisteredUserController::class, 'create'])->name('register');
     Route::get('/login/{lang?}', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::get('/forgot-password/{lang?}', [PasswordResetLinkController::class, 'create'])->name('password.request');
@@ -61,7 +68,7 @@ Route::middleware('domain-check')->group(function () {
     Route::get('add-on/details/{slug}', [HomeController::class, 'SoftwareDetails'])->name('software.details');
     Route::get('pricing', [HomeController::class, 'Pricing'])->name('apps.pricing');
     Route::get('pages', [HomeController::class, 'CustomPage'])->name('custompage');
-    Route::get('/', [HomeController::class, 'index'])->name('start');
+    // Route::get('/', [HomeController::class, 'index'])->name('start');
 });
 Route::middleware(['auth','verified'])->group(function () {
 
